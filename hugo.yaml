@@ -5,6 +5,8 @@ theme: 'docsy'
 
 enableRobotsTXT: true
 enableGitInfo: true
+relativeURLs: false
+canonifyURLs: true
 
 # Content directory
 contentDir: "content"
@@ -32,8 +34,6 @@ params:
     footer_about_enable: true
     
   # Search
-  search:
-    algolia: false
   offlineSearch: false
   
   # Footer
@@ -42,13 +42,6 @@ params:
   # Version info
   version_menu: "Releases"
   version: "main"
-  
-  # Assets and styling
-  assets:
-    css:
-      - "scss/main.scss"
-    js:
-      - "js/main.js"
 
 # Markup configuration
 markup:

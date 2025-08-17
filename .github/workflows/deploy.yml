@@ -60,7 +60,7 @@ jobs:
             --minify \
             --theme docsy \
             --config hugo.yaml \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://kubevim.kubenfv.io/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
