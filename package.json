@@ -1,0 +1,37 @@
+{
+  "name": "kube-vim-website",
+  "version": "1.0.0",
+  "description": "Kube-VIM NFV Virtual Infrastructure Manager website",
+  "scripts": {
+    "build": "hugo --minify",
+    "serve": "hugo server --buildDrafts --buildFuture",
+    "production-build": "hugo --minify --environment production",
+    "preview-build": "hugo --buildDrafts --buildFuture --baseURL $(deploy-preview-url)",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kube-nfv/kube-vim-website.git"
+  },
+  "keywords": [
+    "NFV",
+    "VIM",
+    "Kubernetes",
+    "KubeVirt",
+    "Talos",
+    "DPDK",
+    "SR-IOV",
+    "5G",
+    "ETSI"
+  ],
+  "author": "Kube-VIM Contributors",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

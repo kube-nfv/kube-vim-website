@@ -1,0 +1,67 @@
+baseURL: 'https://kubevim.kubenfv.io'
+languageCode: 'en-us'
+title: 'Kube-VIM - Kubernetes NFV Virtual Infrastructure Manager'
+theme: 'docsy'
+
+enableRobotsTXT: true
+enableGitInfo: true
+
+# Content directory
+contentDir: "content"
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
+params:
+  # Repository links
+  github_repo: 'https://github.com/kube-nfv/kube-vim'
+  github_branch: 'main'
+  github_url: 'https://github.com/kube-nfv/kube-vim'
+  
+  # UI configuration
+  ui:
+    sidebar_menu_compact: false
+    sidebar_menu_foldable: true
+    sidebar_cache_limit: 10
+    breadcrumb_disable: false
+    taxonomy_breadcrumb_disable: false
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: false
+    footer_about_disable: false
+    
+  # Search
+  algolia_docsearch: false
+  offlineSearch: false
+  
+  # Footer
+  copyright: "The Kube-VIM Authors"
+  
+  # Version info
+  version_menu: "Releases"
+  version: "main"
+
+# Markup configuration
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    lineNos: false
+    style: "github"
+
+# Menu configuration
+menu:
+  main:
+    - name: "Documentation"
+      url: "/docs/"
+      weight: 10
+    - name: "GitHub"
+      url: "https://github.com/kube-nfv/kube-vim"
+      weight: 50
+
+# Language settings
+languages:
+  en:
+    title: "Kube-VIM"
+    description: "Kubernetes NFV Virtual Infrastructure Manager"
+    languageName: "English"
+    weight: 1
