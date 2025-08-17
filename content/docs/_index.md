@@ -4,9 +4,6 @@ linkTitle: "Documentation"
 description: "Complete documentation for Kube-VIM NFV Virtual Infrastructure Manager"
 type: docs
 weight: 10
-menu:
-  main:
-    weight: 20
 ---
 
 # Kube-VIM Documentation
