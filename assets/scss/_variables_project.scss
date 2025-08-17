@@ -1,0 +1,64 @@
+/*
+Kube-VIM Custom Color Scheme
+Modern pastel palette optimized for technical infrastructure products
+*/
+
+// Primary brand colors - Soft tech blues and greens
+$primary: #6366f1; // Soft indigo - modern, trustworthy
+$secondary: #8b5cf6; // Soft purple - innovation
+$success: #10b981; // Soft emerald - growth, stability  
+$info: #06b6d4; // Soft cyan - clarity, communication
+$warning: #f59e0b; // Soft amber - attention without alarm
+$danger: #ef4444; // Soft red - clear but not harsh
+
+// Extended palette for sections and accents
+$pastel-mint: #a7f3d0; // Light mint green
+$pastel-blue: #bfdbfe; // Light sky blue
+$pastel-purple: #ddd6fe; // Light lavender
+$pastel-pink: #fce7f3; // Light rose
+$pastel-yellow: #fef3c7; // Light yellow
+$pastel-orange: #fed7aa; // Light peach
+
+// Neutral grays - softer and warmer
+$gray-50: #fafaf9;
+$gray-100: #f5f5f4;
+$gray-200: #e7e5e4;
+$gray-300: #d6d3d1;
+$gray-400: #a8a29e;
+$gray-500: #78716c;
+$gray-600: #57534e;
+$gray-700: #44403c;
+$gray-800: #292524;
+$gray-900: #1c1917;
+
+// Background colors
+$light: $gray-50;
+$dark: $gray-800;
+
+// Override Bootstrap variables
+$body-bg: $gray-50;
+$body-color: $gray-800;
+
+// Navigation and header
+$navbar-dark-bg: rgba($primary, 0.95);
+$navbar-light-bg: rgba($gray-50, 0.98);
+
+// Links and interactive elements
+$link-color: $primary;
+$link-hover-color: darken($primary, 15%);
+
+// Buttons
+$btn-border-radius: 0.5rem;
+$btn-border-radius-lg: 0.75rem;
+
+// Cards and components
+$card-border-radius: 0.75rem;
+$border-radius: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+// Custom section colors
+$section-bg-primary: $primary;
+$section-bg-secondary: $pastel-blue;
+$section-bg-light: $gray-50;
+$section-bg-white: #ffffff;
+$section-bg-dark: $gray-800;

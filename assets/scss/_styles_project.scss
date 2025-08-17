@@ -1,0 +1,222 @@
+/*
+Kube-VIM Custom Styles
+Modern pastel design for technical infrastructure
+*/
+
+// Import custom variables
+@import "variables_project";
+
+// Hero section styling
+.td-cover-block {
+  background: linear-gradient(135deg, #{$primary} 0%, #{$secondary} 100%);
+  
+  .display-1 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  
+  .btn {
+    box-shadow: 0 4px 14px 0 rgba($primary, 0.25);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px 0 rgba($primary, 0.35);
+    }
+  }
+}
+
+// Section styling with modern backgrounds
+.td-box {
+  &--white {
+    background: linear-gradient(135deg, #ffffff 0%, #{$gray-50} 100%);
+  }
+  
+  &--light {
+    background: linear-gradient(135deg, #{$pastel-blue} 0%, #{$pastel-mint} 100%);
+  }
+  
+  &--primary {
+    background: linear-gradient(135deg, #{$primary} 0%, #{$info} 100%);
+  }
+  
+  &--secondary {
+    background: linear-gradient(135deg, #{$secondary} 0%, #{$pastel-purple} 100%);
+  }
+}
+
+// Modern card styling
+.card {
+  border: none;
+  border-radius: $card-border-radius;
+  box-shadow: 0 1px 3px 0 rgba($gray-500, 0.1), 0 1px 2px 0 rgba($gray-500, 0.06);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px 0 rgba($gray-500, 0.15), 0 4px 6px 0 rgba($gray-500, 0.1);
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+}
+
+// Icon styling for features
+.fa-3x {
+  background: linear-gradient(135deg, #{$primary}, #{$secondary});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba($primary, 0.2));
+}
+
+// Typography improvements
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.display-4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $gray-800;
+}
+
+// Button enhancements
+.btn {
+  border-radius: $btn-border-radius;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  transition: all 0.3s ease;
+  
+  &-lg {
+    border-radius: $btn-border-radius-lg;
+    padding: 0.75rem 2rem;
+  }
+  
+  &-primary {
+    background: linear-gradient(135deg, #{$primary} 0%, #{$secondary} 100%);
+    border: none;
+    box-shadow: 0 4px 14px 0 rgba($primary, 0.25);
+    
+    &:hover {
+      background: linear-gradient(135deg, #{darken($primary, 10%)} 0%, #{darken($secondary, 10%)} 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px 0 rgba($primary, 0.35);
+    }
+  }
+  
+  &-outline-light {
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+      transform: translateY(-1px);
+    }
+  }
+  
+  &-light {
+    background: white;
+    color: $primary;
+    border: none;
+    box-shadow: 0 4px 14px 0 rgba(white, 0.25);
+    
+    &:hover {
+      background: $gray-50;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px 0 rgba(white, 0.35);
+    }
+  }
+}
+
+// Navigation styling
+.td-navbar {
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba($primary, 0.1);
+  
+  .navbar-brand__name {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: rgba(255, 255, 255, 0.9) !important;
+    }
+  }
+}
+
+// Lead text styling
+.blocks-lead {
+  background: linear-gradient(135deg, #{$pastel-blue} 0%, #{$pastel-mint} 100%);
+  
+  h2 {
+    color: $gray-800;
+    font-weight: 700;
+  }
+  
+  p {
+    color: $gray-700;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+}
+
+// Feature sections with icons
+.text-primary {
+  color: $primary !important;
+}
+
+// Responsive improvements
+@media (max-width: 768px) {
+  .display-1 {
+    font-size: 2.5rem;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+}
+
+// Subtle animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card, .btn {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+// Custom utility classes
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #{$primary} 0%, #{$secondary} 100%) !important;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, #{$pastel-blue} 0%, #{$pastel-mint} 100%) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #{$primary}, #{$secondary});
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
