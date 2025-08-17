@@ -39,11 +39,7 @@ jobs:
           fetch-depth: 0
 
       - name: Update submodules
-        run: |
-          git submodule update --init --recursive
-          git submodule status
-          echo "Checking if Docsy was properly checked out:"
-          ls -la themes/docsy/layouts/_shortcodes/blocks/ || echo "Shortcodes not found!"
+        run: git submodule update --init --recursive
 
       - name: Setup Pages
         id: pages
@@ -55,24 +51,6 @@ jobs:
       - name: Install Docsy dependencies
         run: cd themes/docsy && npm install
 
-      - name: Debug theme structure
-        run: |
-          echo "Checking theme directory:"
-          ls -la themes/
-          echo "Checking docsy theme:"
-          ls -la themes/docsy/
-          echo "Checking docsy layouts:"
-          ls -la themes/docsy/layouts/
-          echo "Checking docsy shortcodes:"
-          ls -la themes/docsy/layouts/_shortcodes/ || echo "No _shortcodes directory"
-          echo "Checking blocks shortcodes:"
-          ls -la themes/docsy/layouts/_shortcodes/blocks/ || echo "No blocks directory"
-          echo "Hugo version and config:"
-          hugo version
-          hugo config
-          echo "Hugo environment:"
-          hugo env
-
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
@@ -80,6 +58,8 @@ jobs:
         run: |
           hugo \
             --minify \
+            --theme docsy \
+            --config hugo.yaml \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
 
       - name: Upload artifact

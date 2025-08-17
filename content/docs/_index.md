@@ -19,7 +19,8 @@ Get up and running with Kube-VIM in minutes:
 
 - [Getting Started]({{< relref "getting-started" >}}) - Install and configure Kube-VIM
 - [Architecture Overview]({{< relref "architecture" >}}) - Understand the system design
-- [API Reference]({{< relref "api" >}}) - Complete API documentation
+- [Performance & Optimization]({{< relref "performance" >}}) - Performance capabilities and tuning
+- [Standards Compliance]({{< relref "standards" >}}) - ETSI NFV standards support
 
 ## Core Concepts
 

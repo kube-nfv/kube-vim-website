@@ -17,6 +17,10 @@ params:
   github_branch: 'main'
   github_url: 'https://github.com/kube-nfv/kube-vim'
   
+  # Required for Docsy theme
+  github_project_repo: 'https://github.com/kube-nfv/kube-vim'
+  edit_page: true
+  
   # UI configuration
   ui:
     sidebar_menu_compact: false
