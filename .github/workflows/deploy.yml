@@ -62,7 +62,16 @@ jobs:
           echo "Checking docsy theme:"
           ls -la themes/docsy/
           echo "Checking docsy layouts:"
-          ls -la themes/docsy/layouts/shortcodes/ || echo "No shortcodes directory"
+          ls -la themes/docsy/layouts/
+          echo "Checking docsy shortcodes:"
+          ls -la themes/docsy/layouts/_shortcodes/ || echo "No _shortcodes directory"
+          echo "Checking blocks shortcodes:"
+          ls -la themes/docsy/layouts/_shortcodes/blocks/ || echo "No blocks directory"
+          echo "Hugo version and config:"
+          hugo version
+          hugo config
+          echo "Hugo environment:"
+          hugo env
 
       - name: Build with Hugo
         env:
