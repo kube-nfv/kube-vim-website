@@ -39,7 +39,11 @@ jobs:
           fetch-depth: 0
 
       - name: Update submodules
-        run: git submodule update --init --recursive
+        run: |
+          git submodule update --init --recursive
+          git submodule status
+          echo "Checking if Docsy was properly checked out:"
+          ls -la themes/docsy/layouts/_shortcodes/blocks/ || echo "Shortcodes not found!"
 
       - name: Setup Pages
         id: pages
@@ -50,6 +54,15 @@ jobs:
 
       - name: Install Docsy dependencies
         run: cd themes/docsy && npm install
+
+      - name: Debug theme structure
+        run: |
+          echo "Checking theme directory:"
+          ls -la themes/
+          echo "Checking docsy theme:"
+          ls -la themes/docsy/
+          echo "Checking docsy layouts:"
+          ls -la themes/docsy/layouts/shortcodes/ || echo "No shortcodes directory"
 
       - name: Build with Hugo
         env:
