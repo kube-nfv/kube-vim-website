@@ -1,4 +1,359 @@
 /*
 Project style overrides for Docsy.
-Add custom rules here during the design pass.
 */
+
+// Brand gradient reused across hero, icon chips and accent bands.
+$kv-grad: linear-gradient(135deg, #312e81 0%, #4338ca 45%, #0e7490 100%);
+
+body {
+  letter-spacing: -0.01em;
+}
+
+// --- Navbar ----------------------------------------------------------------
+.td-navbar {
+  background: rgba(15, 23, 42, 0.9) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: saturate(140%) blur(8px);
+
+  .navbar-brand,
+  .navbar-brand__name {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #fff;
+  }
+
+  .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.82);
+    &:hover,
+    &:focus,
+    &.active {
+      color: #fff;
+    }
+  }
+
+  // Search box contrast
+  .td-search input,
+  input.td-search-input,
+  .td-search__input {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+// --- Hero ------------------------------------------------------------------
+.kv-hero {
+  position: relative;
+  padding: 8rem 0 5rem;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+    #{$kv-grad};
+
+  // Smooth fade from the hero gradient into the content background below.
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 52vh;
+    // Many stops following an ease-in curve so the blend has no visible seam.
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bs-body-bg) 0%, transparent) 0%,
+      color-mix(in srgb, var(--bs-body-bg) 1%, transparent) 18%,
+      color-mix(in srgb, var(--bs-body-bg) 3%, transparent) 32%,
+      color-mix(in srgb, var(--bs-body-bg) 6%, transparent) 44%,
+      color-mix(in srgb, var(--bs-body-bg) 11%, transparent) 55%,
+      color-mix(in srgb, var(--bs-body-bg) 19%, transparent) 65%,
+      color-mix(in srgb, var(--bs-body-bg) 30%, transparent) 74%,
+      color-mix(in srgb, var(--bs-body-bg) 45%, transparent) 82%,
+      color-mix(in srgb, var(--bs-body-bg) 63%, transparent) 89%,
+      color-mix(in srgb, var(--bs-body-bg) 82%, transparent) 95%,
+      var(--bs-body-bg) 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  &__tagline {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    color: rgba(255, 255, 255, 0.96);
+    margin-bottom: 1.25rem;
+  }
+
+  &__sub {
+    max-width: 34rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 2rem;
+  }
+
+  &__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+
+    .btn-light {
+      color: #312e81;
+    }
+  }
+
+  &__note {
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+  }
+
+  &__art {
+    text-align: center;
+  }
+
+  @media (max-width: 991.98px) {
+    text-align: center;
+    padding-top: 7rem;
+    .kv-hero__sub {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .kv-hero__cta {
+      justify-content: center;
+    }
+    .kv-hero__art {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.kv-mesh {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  overflow: visible;
+  animation: kvFloat 9s ease-in-out infinite;
+
+  .pulse {
+    animation: kvPulse 3.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .pulse--slow {
+    animation-duration: 4.6s;
+    animation-delay: 0.8s;
+  }
+}
+
+@keyframes kvFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+@keyframes kvPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kv-mesh,
+  .kv-mesh .pulse {
+    animation: none;
+  }
+}
+
+// --- Generic section scaffolding -------------------------------------------
+.kv-section {
+  padding: 5rem 0;
+}
+.kv-section--tint {
+  background: var(--bs-tertiary-bg);
+}
+
+.kv-section-head {
+  max-width: 46rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+
+  .kv-eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--bs-primary);
+    margin-bottom: 0.75rem;
+  }
+  h2 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  p {
+    color: var(--bs-secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+}
+
+// --- Feature cards ---------------------------------------------------------
+.kv-card {
+  height: 100%;
+  padding: 1.75rem;
+  border-radius: 1rem;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  box-shadow: 0 1px 2px rgba(2, 6, 23, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 34px rgba(67, 56, 202, 0.16);
+    border-color: rgba(67, 56, 202, 0.4);
+  }
+
+  .kv-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #fff;
+    background: linear-gradient(135deg, #4338ca, #0891b2);
+    margin-bottom: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    color: var(--bs-secondary-color);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+}
+
+// --- "What is" trio --------------------------------------------------------
+.kv-pillar {
+  h3 {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+    i {
+      color: var(--bs-primary);
+    }
+  }
+  p {
+    color: var(--bs-secondary-color);
+    margin-bottom: 0;
+  }
+}
+
+// --- OSS / closing band ----------------------------------------------------
+.kv-oss {
+  position: relative;
+  padding: 7rem 0 5rem;
+  color: #fff;
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px) 0 0 / 22px 22px,
+    #{$kv-grad};
+  text-align: center;
+
+  // Smooth fade from the section above into the gradient band (mirror of the
+  // hero fade, easing from the content background at the top into the gradient).
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 55%;
+    background: linear-gradient(
+      180deg,
+      var(--bs-tertiary-bg) 0%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 82%, transparent) 8%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 63%, transparent) 15%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 45%, transparent) 22%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 30%, transparent) 30%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 19%, transparent) 40%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 11%, transparent) 50%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 6%, transparent) 62%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 3%, transparent) 74%,
+      color-mix(in srgb, var(--bs-tertiary-bg) 1%, transparent) 86%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  p {
+    max-width: 40rem;
+    margin: 0.75rem auto 2rem;
+    opacity: 0.9;
+  }
+  .btn-light {
+    color: #312e81;
+    font-weight: 600;
+  }
+}
+
+// --- Home page: full-bleed bands ------------------------------------------
+// The home content sits inside `.container-fluid.td-outer`, whose horizontal
+// gutter insets full-width sections and leaves side strips. Cancel that gutter
+// on the home bands (same idea as Docsy's own `.row` blocks). Inner
+// `.container` elements keep the actual content centered.
+.td-home {
+  .kv-hero,
+  .kv-section,
+  .kv-oss {
+    margin-left: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+    margin-right: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+  }
+}

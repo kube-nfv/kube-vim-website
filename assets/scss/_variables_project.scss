@@ -1,12 +1,23 @@
 /*
-Project variable overrides for Docsy.
-Kept minimal for the initial scaffold; refine during the design pass.
+Project variable overrides for Docsy (applied before Bootstrap compiles).
 */
 
-// Brand palette (placeholder, tune during design pass).
-$primary: #1a56db; // Kubernetes-blue leaning
-$secondary: #5a6b7b;
-$info: #0ea5e9;
+// --- Brand palette ---------------------------------------------------------
+$primary: #4338ca;   // indigo-700
+$secondary: #0891b2; // cyan-700
+$info: #0ea5e9;      // sky-500
+$success: #059669;
 
-// Slightly wider content column for technical docs / tables.
+// --- Fonts (loaded via layouts/_partials/hooks/head-end.html) -------------
+$td-enable-google-fonts: false;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: "Space Grotesk", #{$font-family-sans-serif};
+$headings-font-weight: 600;
+$display-font-weight: 700;
+
+// --- Layout ----------------------------------------------------------------
 $td-max-width: 80%;
+
+// Sleek dark navbar rather than the default primary bar.
+$td-navbar-bg-color: #0f172a;
