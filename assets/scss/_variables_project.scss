@@ -1,0 +1,12 @@
+/*
+Project variable overrides for Docsy.
+Kept minimal for the initial scaffold; refine during the design pass.
+*/
+
+// Brand palette (placeholder, tune during design pass).
+$primary: #1a56db; // Kubernetes-blue leaning
+$secondary: #5a6b7b;
+$info: #0ea5e9;
+
+// Slightly wider content column for technical docs / tables.
+$td-max-width: 80%;

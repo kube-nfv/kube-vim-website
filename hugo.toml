@@ -1,0 +1,85 @@
+baseURL = "https://kubevim.kubenfv.io/"
+title = "Kube-VIM"
+
+enableRobotsTXT = true
+enableGitInfo = true
+
+# Language / content
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+disableKinds = ["taxonomy", "term"]
+
+# NOTE: all top-level scalar keys must stay ABOVE the first table header below.
+# In TOML, keys placed after a [table] belong to that table, not to the root.
+
+# Highlighting
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    style = "tango"
+    guessSyntax = true
+
+# Docsy is consumed as a Hugo Module (the method recommended by Docsy). Its
+# Bootstrap / FontAwesome dependencies are pulled transitively via `hugo mod get`
+# and vendored into _vendor/ for reproducible builds. See go.mod / go.sum.
+[module]
+  proxy = "direct"
+  [module.hugoVersion]
+    extended = true
+    min = "0.157.0"
+  [[module.imports]]
+    path = "github.com/google/docsy"
+    disable = false
+
+[params]
+  copyright = "The Kube-VIM Authors"
+  description = "A Kubernetes-native, ETSI NFV-MANO compliant Virtual Infrastructure Manager."
+  github_repo = "https://github.com/kube-nfv/kube-vim"
+  github_project_repo = "https://github.com/kube-nfv/kube-vim"
+  github_branch = "main"
+  offlineSearch = true
+
+  [params.ui]
+    breadcrumb_disable = false
+    navbar_logo = false
+    sidebar_menu_compact = false
+    sidebar_search_disable = false
+    ul_show = 1
+    footer_about_enable = false
+
+    [params.ui.feedback]
+      enable = false
+
+  [params.links]
+    [[params.links.user]]
+      name = "GitHub"
+      url = "https://github.com/kube-nfv/kube-vim"
+      icon = "fab fa-github"
+      desc = "Source code and issues on GitHub"
+    [[params.links.developer]]
+      name = "GitHub"
+      url = "https://github.com/kube-nfv/kube-vim"
+      icon = "fab fa-github"
+      desc = "Source code and issues on GitHub"
+
+# Top navbar
+[menu]
+  [[menu.main]]
+    name = "Documentation"
+    weight = 10
+    url = "/docs/"
+  [[menu.main]]
+    name = "GitHub"
+    weight = 90
+    url = "https://github.com/kube-nfv/kube-vim"
+    pre = "<i class='fab fa-github'></i>"
+
+[languages]
+  [languages.en]
+    label = "English"
+    weight = 1
+    [languages.en.params]
+      title = "Kube-VIM"
+      description = "A Kubernetes-native, ETSI NFV-MANO compliant Virtual Infrastructure Manager."
