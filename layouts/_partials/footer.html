@@ -1,0 +1,44 @@
+{{/*
+  Overrides Docsy's three-column footer with a single centred stack.
+
+  Docsy's default renders `params.links.user` on the left and
+  `params.links.developer` on the right; with one project repo there is nothing
+  to put in the second column. The copyright is written out here rather than
+  via `footer/copyright.html` so the theme's "All Rights Reserved" string is not
+  appended, which contradicts an Apache 2.0 project.
+*/}}
+<footer class="td-footer kv-footer d-print-none">
+  <div class="container kv-footer__inner">
+    {{ with .Site.Params.links }}
+      {{ with index . "user" }}
+        <ul class="kv-footer__links">
+          {{ range . }}
+            <li>
+              <a href="{{ .url }}" target="_blank" rel="noopener" title="{{ .desc }}">
+                <i class="{{ .icon }}" aria-hidden="true"></i> {{ .name }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    {{ end }}
+
+    <div class="kv-footer__legal">
+      <span>&copy; {{ now.Year }} {{ .Site.Params.copyright | default "The Kube-VIM Authors" }}</span>
+      {{ with .Site.Params.license_name }}
+        <span>
+          {{ with $.Site.Params.license_url }}
+            <a href="{{ . }}" target="_blank" rel="noopener">{{ $.Site.Params.license_name }}</a>
+          {{ else }}
+            {{ . }}
+          {{ end }}
+        </span>
+      {{ end }}
+    </div>
+
+    <div class="kv-footer__colophon">
+      Built with <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>
+      and the <a href="https://www.docsy.dev" target="_blank" rel="noopener">Docsy</a> theme.
+    </div>
+  </div>
+</footer>

@@ -120,7 +120,101 @@ linkTitle: Kube-VIM
   </div>
 </section>
 
-<section class="kv-section">
+<section class="kv-section kv-section--flow" id="how-it-fits">
+  <div class="container">
+    <div class="kv-section-head">
+      <span class="kv-eyebrow">How it fits</span>
+      <h2>From ETSI request to running VNF</h2>
+      <p>Your orchestrator speaks the standard reference points. Kube-VIM turns what it asks for into Kubernetes objects.</p>
+    </div>
+    <div class="kv-flow" role="img" aria-label="Any ETSI NFV-MANO compatible orchestrator drives Kube-VIM over the Or-Vi, Vi-Vnfm and SOL 013 reference points. Kube-VIM creates and reconciles Kubernetes resources through KubeVirt, CDI, Kube-OVN and Multus, which run the VNF virtual machines. The VNFs share one cluster with the CNF workloads that are already running there, on the same nodes, network fabric and tooling, on any Kubernetes distribution at the edge or in the cloud.">
+      <div class="kv-flow__node">
+        <span class="kv-flow__glyph kv-flow__glyph--mano" aria-hidden="true">
+          <i class="fas fa-sitemap"></i>
+        </span>
+        <div>
+          <h3>NFVO / VNFM</h3>
+          <p>Any ETSI NFV-MANO compatible orchestrator drives Kube-VIM over the standard reference points.</p>
+        </div>
+      </div>
+      <div class="kv-flow__conn">
+        <span class="kv-flow__stem"></span>
+        <span class="kv-flow__pill">Or-Vi &middot; Vi-Vnfm &middot; SOL 013</span>
+        <span class="kv-flow__stem"></span>
+        <span class="kv-flow__cap"></span>
+      </div>
+      <div class="kv-flow__vim">
+        <div class="kv-flow__vim-text">
+          <h3>Kube-VIM</h3>
+          <p>Translates ETSI MANO requests into Kubernetes resources. Stateless, with no external database.</p>
+        </div>
+        <div class="kv-flow__chips">
+          <span class="kv-flow__chip">gRPC</span>
+          <span class="kv-flow__chip">REST / OpenAPI</span>
+        </div>
+      </div>
+      <div class="kv-flow__conn">
+        <span class="kv-flow__stem"></span>
+        <span class="kv-flow__note">creates and reconciles</span>
+        <span class="kv-flow__stem"></span>
+        <span class="kv-flow__cap"></span>
+      </div>
+      <div class="kv-flow__krm">
+        <span class="kv-flow__eyebrow">Kubernetes resource model</span>
+        <div class="kv-flow__comps">
+          <div class="kv-flow__comp"><b>KubeVirt</b><span>VM compute</span></div>
+          <div class="kv-flow__comp"><b>CDI</b><span>Disk images</span></div>
+          <div class="kv-flow__comp"><b>Kube-OVN</b><span>Networks and subnets</span></div>
+          <div class="kv-flow__comp"><b>Multus</b><span>Multi-NIC, SR-IOV</span></div>
+        </div>
+      </div>
+      <div class="kv-flow__conn kv-flow__conn--split">
+        <span>
+          <span class="kv-flow__stem"></span>
+          <span class="kv-flow__cap"></span>
+        </span>
+        <span></span>
+      </div>
+      <div class="kv-flow__cluster">
+        <div class="kv-flow__cluster-head">
+          <span class="kv-flow__eyebrow">One cluster</span>
+          <span>Kube-VIM creates the VNFs. Your containers are already here.</span>
+          <span class="kv-flow__where"><i class="fas fa-location-dot" aria-hidden="true"></i> Edge or cloud</span>
+        </div>
+        <div class="kv-flow__loads">
+          <div class="kv-flow__load kv-flow__load--vnf">
+            <span class="kv-flow__glyph kv-flow__glyph--vnf" aria-hidden="true">
+              <i class="fas fa-display"></i>
+            </span>
+            <div>
+              <h3>VNF virtual machines</h3>
+              <p>KubeVirt workloads</p>
+              <span class="kv-flow__tag kv-flow__tag--managed">Created by Kube-VIM</span>
+            </div>
+          </div>
+          <div class="kv-flow__load">
+            <span class="kv-flow__glyph kv-flow__glyph--cnf" aria-hidden="true">
+              <i class="fas fa-cubes"></i>
+            </span>
+            <div>
+              <h3>CNF workloads</h3>
+              <p>Your existing containers</p>
+              <span class="kv-flow__tag kv-flow__tag--peer">Runs alongside</span>
+            </div>
+          </div>
+        </div>
+        <div class="kv-flow__fabric">
+          <span><b>Same nodes</b> and resource pool</span>
+          <span><b>Same network fabric</b> via Multus and SR-IOV</span>
+          <span><b>Same tooling</b> and cluster APIs</span>
+        <span><b>Any distribution</b>, from an edge box to a datacentre</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kv-section kv-section--tint">
   <div class="container">
     <div class="kv-section-head">
       <span class="kv-eyebrow">Why Kube-VIM</span>
@@ -188,7 +282,7 @@ linkTitle: Kube-VIM
   </div>
 </section>
 
-<section class="kv-section kv-section--tint">
+<section class="kv-section">
   <div class="container">
     <div class="kv-section-head">
       <span class="kv-eyebrow">What is Kube-VIM</span>

@@ -229,6 +229,319 @@ body {
   }
 }
 
+// --- "How it fits" flow diagram --------------------------------------------
+// Built from real markup rather than a flat SVG so the labels stay selectable,
+// scale with the reader's font size, and reflow on narrow screens.
+.kv-flow {
+  --kv-flow-line: #cbd5e1;
+  --kv-flow-panel: #f5f6fb;
+  --kv-flow-panel-line: #e2e5f0;
+  --kv-flow-cluster: #f0fbfd;
+  --kv-flow-cluster-line: #a8dbe6;
+
+  max-width: 62rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.15rem;
+  }
+  p {
+    margin: 0;
+    color: var(--bs-secondary-color);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  &__eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bs-secondary-color);
+  }
+
+  &__glyph {
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+
+    &--mano,
+    &--cnf {
+      background: #eef0fb;
+      border: 1px solid #dcdff5;
+      color: var(--bs-primary);
+    }
+    &--vnf {
+      background: linear-gradient(135deg, #4338ca, #0e7490);
+      color: #fff;
+    }
+  }
+
+  // --- nodes ---------------------------------------------------------------
+  &__node {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    background: var(--bs-body-bg);
+    border: 1px solid var(--kv-flow-panel-line);
+    box-shadow: 0 1px 2px rgba(2, 6, 23, 0.05),
+      0 8px 24px -18px rgba(49, 46, 129, 0.4);
+  }
+
+  &__vim {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding: 1.5rem 1.6rem;
+    border-radius: 1.15rem;
+    color: #fff;
+    background: #{$kv-grad};
+    box-shadow: 0 18px 40px -24px rgba(49, 46, 129, 0.85);
+
+    h3 {
+      font-size: 1.85rem;
+      line-height: 1.1;
+      color: #fff;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.95rem;
+    }
+  }
+  &__vim-text {
+    flex: 1 1 20rem;
+  }
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+  &__chip {
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 0.35rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &__krm {
+    padding: 1.15rem 1.35rem 1.25rem;
+    border-radius: 1rem;
+    background: var(--kv-flow-panel);
+    border: 1px solid var(--kv-flow-panel-line);
+  }
+  &__comps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 0.85rem;
+  }
+  &__comp {
+    flex: 1 1 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.65rem;
+    background: var(--bs-body-bg);
+    border: 1px solid var(--kv-flow-panel-line);
+
+    b {
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 600;
+      font-size: 0.98rem;
+    }
+    span {
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: var(--bs-secondary-color);
+    }
+  }
+
+  // --- connectors ----------------------------------------------------------
+  &__conn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // Splits the row in two so the arrow lands on the VNF card below, not on
+    // the gap between the two workload cards.
+    &--split {
+      flex-direction: row;
+      align-items: flex-start;
+
+      > span {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+  &__stem {
+    width: 2px;
+    height: 0.9rem;
+    background: var(--kv-flow-line);
+  }
+  &__conn--split &__stem {
+    height: 1.6rem;
+  }
+  &__cap {
+    width: 0;
+    height: 0;
+    border-left: 5.5px solid transparent;
+    border-right: 5.5px solid transparent;
+    border-top: 7px solid var(--kv-flow-line);
+  }
+  &__pill {
+    border: 1px solid #d5d9ea;
+    background: var(--kv-flow-panel);
+    border-radius: 999px;
+    padding: 0.4rem 1.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bs-secondary-color);
+    white-space: nowrap;
+  }
+  &__note {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--bs-secondary-color);
+  }
+
+  // --- shared cluster ------------------------------------------------------
+  &__cluster {
+    padding: 1.15rem 1.25rem 1rem;
+    border-radius: 1.15rem;
+    border: 1.5px dashed var(--kv-flow-cluster-line);
+    background: var(--kv-flow-cluster);
+  }
+  &__cluster-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.85rem;
+    margin-bottom: 0.9rem;
+    font-size: 0.85rem;
+    color: var(--bs-secondary-color);
+
+    .kv-flow__eyebrow {
+      color: #0e7490;
+    }
+  }
+  // Sits at the far end of the cluster header: where that cluster can live.
+  &__where {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--kv-flow-cluster-line);
+    background: var(--bs-body-bg);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #0e7490;
+
+    i {
+      font-size: 0.72rem;
+    }
+  }
+  &__loads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+  &__load {
+    flex: 1 1 15rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    border-radius: 0.85rem;
+    background: var(--bs-body-bg);
+    border: 1px solid #d6e6ec;
+
+    h3 {
+      font-size: 1.05rem;
+    }
+    p {
+      font-size: 0.82rem;
+    }
+    &--vnf {
+      border-color: #9ad4e3;
+      box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.09);
+    }
+  }
+  &__tag {
+    display: inline-flex;
+    margin-top: 0.5rem;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    &--managed {
+      background: #0891b2;
+      color: #fff;
+    }
+    &--peer {
+      background: #eaeef5;
+      color: var(--bs-secondary-color);
+    }
+  }
+  &__fabric {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.6rem;
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--kv-flow-cluster-line);
+    font-size: 0.82rem;
+    color: var(--bs-secondary-color);
+
+    b {
+      color: var(--bs-body-color);
+      font-weight: 600;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    &__chips {
+      margin-left: 0;
+    }
+    &__vim h3 {
+      font-size: 1.5rem;
+    }
+    // With one card per row the split arrow has nothing to offset against.
+    &__conn--split > span:last-child {
+      display: none;
+    }
+    &__fabric {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+}
+
 // --- Feature cards ---------------------------------------------------------
 .kv-card {
   height: 100%;
@@ -355,5 +668,93 @@ body {
   .kv-oss {
     margin-left: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
     margin-right: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+  }
+}
+
+// --- Footer ----------------------------------------------------------------
+// Paired with the layouts/_partials/footer.html override, which replaces
+// Docsy's three-column layout with a single centered stack.
+.kv-footer {
+  // Docsy renders the footer inside `.container-fluid.td-outer`, whose gutter
+  // padding otherwise leaves white strips down both edges of the dark band.
+  margin-left: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+  margin-right: calc(-0.5 * var(--bs-gutter-x, 1.5rem));
+  padding: 2.5rem 0 2.25rem;
+  text-align: center;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.92rem;
+    font-weight: 500;
+
+    a {
+      color: rgba(255, 255, 255, 0.86);
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+    i {
+      margin-right: 0.4rem;
+      opacity: 0.85;
+    }
+  }
+
+  &__legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 1.1rem;
+    font-size: 0.87rem;
+    color: rgba(255, 255, 255, 0.72);
+
+    // Thin separator between the copyright and the license.
+    span + span::before {
+      content: "·";
+      margin-right: 1.1rem;
+      opacity: 0.5;
+    }
+    a {
+      color: rgba(255, 255, 255, 0.86);
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
+  &__colophon {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
+
+    a {
+      color: rgba(255, 255, 255, 0.72);
+      &:hover,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    // Stacked separators read as stray dots once the row wraps.
+    &__legal span + span::before {
+      content: none;
+    }
   }
 }
