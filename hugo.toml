@@ -48,7 +48,7 @@ disableKinds = ["taxonomy", "term"]
 
   [params.ui]
     breadcrumb_disable = false
-    navbar_logo = false
+    navbar_logo = true
     sidebar_menu_compact = false
     sidebar_search_disable = false
     ul_show = 1

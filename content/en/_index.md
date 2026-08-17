@@ -42,6 +42,11 @@ linkTitle: Kube-VIM
               <stop offset="0.5" stop-color="#e0e7ff" stop-opacity="0.7"/>
               <stop offset="1" stop-color="#a5f3fc" stop-opacity="1"/>
             </linearGradient>
+            <radialGradient id="kvHubHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.55"/>
+              <stop offset="55%" stop-color="#1e1b4b" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0"/>
+            </radialGradient>
             <filter id="kvGlowF" x="-60%" y="-60%" width="220%" height="220%">
               <feGaussianBlur stdDeviation="2.6" result="b"/>
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -111,9 +116,15 @@ linkTitle: Kube-VIM
             <circle r="2.6"><animateMotion dur="5.5s" begin="2s" repeatCount="indefinite" path="M470,230 L520,310 L590,370"/></circle>
             <circle r="2.4"><animateMotion dur="6s" begin="1.4s" repeatCount="indefinite" path="M70,300 L150,210 L250,280 L430,260 L470,230"/></circle>
           </g>
-          <circle cx="470" cy="230" r="16" fill="url(#kvNode)" filter="url(#kvGlowF)"/>
-          <circle cx="470" cy="230" r="25" fill="none" stroke="#67e8f9" stroke-opacity="0.55" stroke-width="1.5" class="pulse"/>
-          <circle cx="470" cy="230" r="36" fill="none" stroke="#67e8f9" stroke-opacity="0.25" stroke-width="1" class="pulse pulse--slow"/>
+          <circle cx="470" cy="230" r="110" fill="url(#kvHubHalo)"/>
+          <g transform="translate(409,169) scale(1.9)">
+            <circle cx="32" cy="32" r="22" fill="none" stroke="#c7d2fe" stroke-width="5" stroke-dasharray="20 18" stroke-dashoffset="10" stroke-linecap="round"/>
+            <circle cx="32" cy="10" r="7" fill="#e0e7ff"/>
+            <circle cx="51" cy="43" r="7" fill="#e0e7ff"/>
+            <circle cx="13" cy="43" r="7" fill="#e0e7ff"/>
+            <rect x="23" y="23" width="18" height="18" rx="4" fill="#22d3ee"/>
+          </g>
+          <circle cx="470" cy="230" r="78" fill="none" stroke="#67e8f9" stroke-opacity="0.25" stroke-width="1" class="pulse pulse--slow"/>
         </svg>
       </div>
     </div>
