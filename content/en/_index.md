@@ -10,8 +10,8 @@ linkTitle: Kube-VIM
         <h1 class="kv-hero__title">Kube-VIM</h1>
         <p class="kv-hero__tagline">NFV, the Kubernetes way</p>
         <p class="kv-hero__sub">
-          An ETSI NFV-MANO compliant Virtual Infrastructure Manager that runs
-          virtual network functions on Kubernetes, next to your cloud-native
+          A Virtual Infrastructure Manager compatible with ETSI NFV-MANO that
+          runs virtual network functions on Kubernetes, next to your cloud-native
           workloads.
         </p>
         <div class="kv-hero__cta">
@@ -230,7 +230,7 @@ linkTitle: Kube-VIM
     <div class="kv-section-head">
       <span class="kv-eyebrow">Why Kube-VIM</span>
       <h2>Carrier NFV, without a parallel stack</h2>
-      <p>Standards-compliant on the outside, plain Kubernetes on the inside.</p>
+      <p>ETSI standards on the outside, plain Kubernetes on the inside.</p>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">

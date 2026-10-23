@@ -41,18 +41,29 @@ only talk inside one cluster, you can accept plaintext with
 ## Check it
 
 ```bash
-curl -i https://kube-vim-gateway/vivnfm/v5/images
+curl -i https://kube-vim-gateway/image/v1/images
 # HTTP/1.1 401 Unauthorized
 # Www-Authenticate: Bearer realm="kube-vim"
 
-curl -i -H "Authorization: Bearer $TOKEN" https://kube-vim-gateway/vivnfm/v5/images
+curl -i -H "Authorization: Bearer $TOKEN" https://kube-vim-gateway/image/v1/images
 # HTTP/1.1 200 OK
 ```
 
 An expired or wrong token returns 401 with `error="invalid_token"`. Kube-VIM logs every
 request with the client that sent it.
 
+## Scopes
+
+Each operation needs one OAuth 2.0 scope in the token, named `<api>:v1:<permission>`, such as
+`image:v1:query` to list images or `compute:v1:allocate` to create a VM. A token without the
+scope gets 403 with `error="insufficient_scope"`. The
+[API Reference](/docs/api-reference/#authentication-and-scopes) lists every scope.
+
+Grant the scopes to each client in your identity provider. An orchestrator usually gets all of
+them; a VNF manager gets all of them except `image:v1:add`, `image:v1:update` and
+`image:v1:delete`, which matches the ETSI split between Or-Vi and Vi-Vnfm.
+
 ## Limits
 
-Any valid token gets full access, including the admin API, so give each Kube-VIM its own
-audience. Per-operation scopes and certificate-bound tokens (RFC 8705) are planned.
+Give each Kube-VIM its own audience, so a token issued for one cannot be used on another.
+Certificate-bound tokens (RFC 8705) are planned.
