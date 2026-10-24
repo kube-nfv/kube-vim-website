@@ -66,8 +66,7 @@ What Kube-VIM adds, mostly where Kubernetes infrastructure offers more than IFA 
   catalog; import up front or on first use; progress and failure reasons; firmware (BIOS, EFI,
   secure boot) and boot disk bus.
 - **Flavours:** hugepages and guest CPU topology.
-- **Networks:** provider networks by name, with Kube-VIM choosing the backend (Kube-OVN overlay
-  or VLAN, or SR-IOV); dual-stack networks with one IPv4 and one IPv6 subnet; MTU and DNS
+- **Networks:** provider networks by name, realised as Kube-VIM decides; dual-stack networks with one IPv4 and one IPv6 subnet; MTU and DNS
   servers.
 - **Compute:** placement groups (together or apart, per node or zone, required or preferred);
   creating a VM stopped and resuming it after a pause; interface names, NIC models and address
